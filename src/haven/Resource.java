@@ -42,7 +42,7 @@ public class Resource {
     static final byte[] BSIG = { 72, 97, 118, 101, 110, 32, 82, 101, 115, 111, 117, 114, 99, 101, 32, 49 };
     public static String OUT = "dout/";
     private static final String END = "\r\n";
-    private static Map<String, Class<? extends Layer>> ltypes = new TreeMap<String, Class<? extends Layer>>();
+    private static Map<String, Class<? extends Layer>> ltypes = new TreeMap<>();
     public static Class<Image> imgc = Image.class;
     public static Class<Tile> tile = Tile.class;
     public static Class<Neg> negc = Neg.class;
@@ -95,7 +95,7 @@ public class Resource {
       MUSIC	=> .music
      */
 
-    private Collection<? extends Layer> layers = new LinkedList<Layer>();
+    private Collection<? extends Layer> layers = new LinkedList<>();
     public final String out;
     public final String name;
     public int ver;
@@ -374,8 +374,8 @@ public class Resource {
 	public Coord[][] ep;
 
 	public int en;
-	public ArrayList<Integer> cns = new ArrayList<Integer>();
-	public ArrayList<Integer> epds = new ArrayList<Integer>();
+	public ArrayList<Integer> cns = new ArrayList<>();
+	public ArrayList<Integer> epds = new ArrayList<>();
 
 	public Neg(byte[] buf) {
 	    int off;
@@ -918,8 +918,8 @@ public class Resource {
 
     public class CodeEntry extends Layer {
 	private int size = 0;
-	private ArrayList<String> p = new ArrayList<String>();
-	private ArrayList<String> e = new ArrayList<String>();
+	private ArrayList<String> p = new ArrayList<>();
+	private ArrayList<String> e = new ArrayList<>();
 
 	public CodeEntry(byte[] buf) {
 	    int[] off = new int[1];
@@ -1123,7 +1123,7 @@ public class Resource {
 	buf = new byte[2];
 	readall(in, buf);
 	ver = Utils.uint16d(buf, 0); /* 2 bytes */
-	List<Layer> layers = new LinkedList<Layer>();
+	List<Layer> layers = new LinkedList<>();
 	outer: while (true) {
 	    StringBuilder tbuf = new StringBuilder();
 	    while (true) { /* load in layer type */
@@ -1202,7 +1202,7 @@ public class Resource {
 	File df[];
 	String n;
 	int i, j;
-	List<Layer> layers = new LinkedList<Layer>();
+	List<Layer> layers = new LinkedList<>();
 	for (i = 0; i < l.length; ++i) {
 	    if (l[i].isDirectory()) {
 		n = l[i].getName();

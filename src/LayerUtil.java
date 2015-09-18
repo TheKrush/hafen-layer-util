@@ -156,7 +156,7 @@ public class LayerUtil {
 	    System.out.print(RF[fl]);
 	    System.exit(0);
 	}
-	ArrayList<String> files = new ArrayList<String>();
+	ArrayList<String> files = new ArrayList<>();
 	String in = args[st + 1];
 	int in_len = in.length();
 	String out = args[st + 2].replace("\\", "/") + "/";
