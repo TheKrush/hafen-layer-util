@@ -1,7 +1,7 @@
 /*
  *  This file is part of the Haven & Hearth game client.
  *  Copyright (C) 2009 Fredrik Tolf <fredrik@dolda2000.com>, and
- *                     Björn Johannessen <johannessen.bjorn@gmail.com>
+ *                     Bjï¿½rn Johannessen <johannessen.bjorn@gmail.com>
  *
  *  Redistribution and/or modification of this file is subject to the
  *  terms of the GNU Lesser General Public License, version 3, as
@@ -175,19 +175,23 @@ public class Resource {
 	    baos.close();
 	}
 
+	@Override
 	public int size() {
 	    int s = 11;
 	    s += raw.length;
 	    return (s);
 	}
 
+	@Override
 	public int type() {
 	    return IMAGE;
 	}
 
+	@Override
 	public void init() {
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    new File(res + "/image/").mkdirs();
 	    File f = new File(res + "/image/image_" + i + ".data");
@@ -210,6 +214,7 @@ public class Resource {
 	    ImageIO.write(img, "png", new File(res + "/image/image_" + i + ".png"));
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_int16d(z)); /* 2 bytes */
 	    out.write(Utils.byte_int16d(subz)); /* 2 bytes */
@@ -244,17 +249,21 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    return (size);
 	}
 
+	@Override
 	public int type() {
 	    return TOOLTIP;
 	}
 
+	@Override
 	public void init() {
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/tooltip/tooltip_" + i + ".data");
 	    new File(res + "/tooltip/").mkdirs();
@@ -267,6 +276,7 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_strd(t)); /* str bytes */
 	}
@@ -310,16 +320,19 @@ public class Resource {
 	    baos.close();
 	}
 
+	@Override
 	public int size() {
 	    int s = 4;
 	    s += raw.length;
 	    return (s);
 	}
 
+	@Override
 	public int type() {
 	    return TILE;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/tile/tile_" + i + ".data");
 	    new File(res + "/tile/").mkdirs();
@@ -337,6 +350,7 @@ public class Resource {
 	    ImageIO.write(img, "png", new File(res + "/tile/tile_" + i + ".png"));
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(new byte[] { (byte) (t & 0xFF) }); /* 1 byte */
 	    out.write(new byte[] { (byte) (id & 0xFF) }); /* 1 byte */
@@ -344,6 +358,7 @@ public class Resource {
 	    out.write(raw); /* img bytes */
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -409,6 +424,7 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    int s = 17;
 	    for (int i = 0; i < cns.size(); ++i) {
@@ -420,10 +436,12 @@ public class Resource {
 	    return (s);
 	}
 
+	@Override
 	public int type() {
 	    return NEG;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/neg/neg_" + i + ".data");
 	    new File(res + "/neg/").mkdirs();
@@ -460,6 +478,7 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_int16d(cc.x));
 	    out.write(Utils.byte_int16d(cc.y));
@@ -480,6 +499,7 @@ public class Resource {
 	    }
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -515,16 +535,19 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    int s = 6;
 	    s += (2 * ids.length);
 	    return (s);
 	}
 
+	@Override
 	public int type() {
 	    return ANIM;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/anim/anim_" + i + ".data");
 	    new File(res + "/anim/").mkdirs();
@@ -545,6 +568,7 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_int16d(id));
 	    out.write(Utils.byte_int16d(d));
@@ -553,6 +577,7 @@ public class Resource {
 		out.write(Utils.byte_int16d(ids[i]));
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -609,14 +634,17 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    return (size);
 	}
 
+	@Override
 	public int type() {
 	    return TILESET;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/tileset/tileset_" + i + ".data");
 	    new File(res + "/tileset/").mkdirs();
@@ -641,6 +669,7 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(new byte[] { (byte) (fl & 0xFF) });
 	    out.write(Utils.byte_int16d(flnum));
@@ -652,6 +681,7 @@ public class Resource {
 	    }
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -679,14 +709,17 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    return (size);
 	}
 
+	@Override
 	public int type() {
 	    return PAGINA;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/pagina/pagina_" + i + ".data");
 	    new File(res + "/pagina/").mkdirs();
@@ -699,10 +732,12 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_strd(text));
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -755,14 +790,17 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    return (size + 6);
 	}
 
+	@Override
 	public int type() {
 	    return ABUTTON;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/action/action_" + i + ".data");
 	    new File(res + "/action/").mkdirs();
@@ -789,6 +827,7 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_strd(pr));
 	    out.write(Utils.byte_int16d(pver));
@@ -800,6 +839,7 @@ public class Resource {
 		out.write(Utils.byte_strd(ad[j]));
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -832,14 +872,17 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    return (size + data.length);
 	}
 
+	@Override
 	public int type() {
 	    return CODE;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/code/code_" + i + ".data");
 	    new File(res + "/code/").mkdirs();
@@ -858,11 +901,13 @@ public class Resource {
 	    fout.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(Utils.byte_strd(name));
 	    out.write(data);
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -900,14 +945,17 @@ public class Resource {
 	    br.close();
 	}
 
+	@Override
 	public int size() {
 	    return (size);
 	}
 
+	@Override
 	public int type() {
 	    return CODEENTRY;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/codeentry/codeentry_" + i + ".data");
 	    new File(res + "/codeentry/").mkdirs();
@@ -926,6 +974,7 @@ public class Resource {
 	    bw.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    for (int i = 0; i < p.size(); ++i) {
 		out.write(Utils.byte_strd(p.get(i)));
@@ -933,6 +982,7 @@ public class Resource {
 	    }
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -959,14 +1009,17 @@ public class Resource {
 	    fis.close();
 	}
 
+	@Override
 	public int size() {
 	    return (raw.length);
 	}
 
+	@Override
 	public int type() {
 	    return AUDIO;
 	}
 
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f = new File(res + "/audio/audio_" + i + ".ogg");
 	    new File(res + "/audio/").mkdirs();
@@ -977,10 +1030,12 @@ public class Resource {
 	    fout.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(raw);
 	}
 
+	@Override
 	public void init() {
 	}
     }
@@ -1007,8 +1062,11 @@ public class Resource {
 	    fis.close();
 	}
 
+	@Override
 	public int size() { return(raw.length); }
+	@Override
 	public int type() { return MUSIC; }
+	@Override
 	public void decode(String res, int i) throws Exception {
 	    File f= new File(res+"/midi/midi_"+i+".midi"); /* what file type is this idk? */
 	    new File(res + "/midi/").mkdirs();
@@ -1019,10 +1077,12 @@ public class Resource {
 	    fout.close();
 	}
 
+	@Override
 	public void encode(OutputStream out) throws Exception {
 	    out.write(raw);
 	}
 
+	@Override
 	public void init() {
 	}
     }

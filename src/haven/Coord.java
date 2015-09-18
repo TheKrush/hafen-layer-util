@@ -1,7 +1,7 @@
 /*
  *  This file is part of the Haven & Hearth game client.
  *  Copyright (C) 2009 Fredrik Tolf <fredrik@dolda2000.com>, and
- *                     Björn Johannessen <johannessen.bjorn@gmail.com>
+ *                     Bjï¿½rn Johannessen <johannessen.bjorn@gmail.com>
  *
  *  Redistribution and/or modification of this file is subject to the
  *  terms of the GNU Lesser General Public License, version 3, as
@@ -53,6 +53,7 @@ public class Coord implements Comparable<Coord>, java.io.Serializable {
 	return(new Coord((int)(Math.cos(a) * r), -(int)(Math.sin(a)* r)));
     }
 	
+		@Override
     public boolean equals(Object o) {
 	if(!(o instanceof Coord))
 	    return(false);
@@ -60,6 +61,7 @@ public class Coord implements Comparable<Coord>, java.io.Serializable {
 	return((c.x == x) && (c.y == y));
     }
 	
+		@Override
     public int compareTo(Coord c) {
 	if(c.y != y)
 	    return(c.y - y);
@@ -132,6 +134,7 @@ public class Coord implements Comparable<Coord>, java.io.Serializable {
 	return((x >= c.x) && (y >= c.y) && (x < c.x + s.x) && (y < c.y + s.y));
     }
 	
+		@Override
     public String toString() {
 	return("(" + x + ", " + y + ")");
     }
