@@ -20,7 +20,6 @@
  */
 
 import haven.Resource;
-
 import java.io.File;
 import java.util.ArrayList;
 
